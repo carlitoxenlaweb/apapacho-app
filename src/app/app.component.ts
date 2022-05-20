@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,28 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+
+  constructor(
+    private router: Router,
+    private storageService: StorageService,
+    private menu: MenuController
+  ) {
+    this.storageService.init();
+  }
+
+  openLink (link: string) {
+    window.open(link);
+    this.menu.close();
+  }
+
+  goTo (page: string) {
+    this.router.navigate([page]);
+    this.menu.close();
+  }
+
+  logout () {
+    this.goTo('/login');
+    this.menu.close();
+  }
+
 }

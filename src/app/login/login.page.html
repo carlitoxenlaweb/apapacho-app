@@ -1,0 +1,40 @@
+<ion-content>
+  <div class="ion-padding" id="cloud-layer">
+    <ion-row>
+      <ion-col class="ion-padding ion-text-center">
+        <img src="/assets/logo.png" />
+      </ion-col>
+    </ion-row>
+    <div *ngIf="!isLoading" [@slideFromTop]>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <ion-row>
+          <ion-col>
+            <ion-list>
+              <ion-item>
+                <ion-label position="floating">Usuario</ion-label>
+                <ion-input formControlName="username"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button type="submit" color="primary" expand="block">Entrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button color="light" expand="block" fill="outline" (click)="goTo('register')">Registrarse</ion-button>
+          <ion-text color="light">
+            <p (click)="goTo('reset-password')">¿Olvidaste tu contraseña?</p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>
