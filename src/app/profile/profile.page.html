@@ -1,9 +1,58 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-
+  <ion-card>
+    <ion-card-content>
+      <form [formGroup]="mainForm" (ngSubmit)="updateProfile()">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label position="floating">Nombre</ion-label>
+              <ion-input formControlName="firstname"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Apellido</ion-label>
+              <ion-input formControlName="lastname"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Teléfono</ion-label>
+              <ion-input type="tel" formControlName="phone"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Dirección</ion-label>
+              <ion-input formControlName="address"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Correo</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Fecha de Nacimiento</ion-label>
+              <ion-input type="date" formControlName="birthday"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Hora de Nacimiento</ion-label>
+              <ion-input type="time" formControlName="birthday_hour"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="ion-text-center">
+            <ion-button type="submit" color="primary" expand="block">Actualizar Perfil</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button color="danger" expand="block" fill="outline" (click)="changePassword()">Cambiar Contraseña</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

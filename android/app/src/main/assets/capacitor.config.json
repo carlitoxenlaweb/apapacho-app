@@ -1,0 +1,6 @@
+{
+	"appId": "app.apapacho.com",
+	"appName": "app",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

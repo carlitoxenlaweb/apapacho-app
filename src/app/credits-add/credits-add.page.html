@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="goTo('/credits')" *ngIf="selectedPack == null">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+      <ion-button (click)="selectPack(null)" *ngIf="selectedPack != null">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Agregar Créditos</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div *ngIf="selectedPack == null" [@slideInOut]>
+    <ion-card *ngFor="let pack of packList" (click)="selectPack(pack)">
+      <ion-card-header>
+        <ion-card-subtitle>{{ pack.credits }} Créditos</ion-card-subtitle>
+        <ion-card-title>{{ pack.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="ion-text-center ion-padding-bottom">
+          <img [src]="pack.icon" />
+        </div>
+        <p>{{ pack.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="selectedPack != null" [@slideInOutL]>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{ selectedPack.credits }} Créditos</ion-card-subtitle>
+        <ion-card-title>{{ selectedPack.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="ion-text-center ion-padding-bottom">
+          <img [src]="selectedPack.icon" />
+        </div>
+        <p>{{ selectedPack.description }}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <p>Aqui mostramos los medios iconos de pago y procesamos la compra, por ejemplo:.</p>
+        <div class="ion-text-center ion-padding-top">
+          <ion-icon name="logo-paypal" size="large"></ion-icon>&nbsp;
+          <ion-icon name="logo-venmo" size="large"></ion-icon>&nbsp;
+          <ion-icon name="logo-usd" size="large"></ion-icon>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

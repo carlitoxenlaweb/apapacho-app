@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-splash',
@@ -9,10 +10,12 @@ import { Router } from '@angular/router';
 export class SplashPage {
 
   constructor(
-    private router: Router
+    private router: Router,
+    private storage: StorageService
   ) { }
 
-  ionViewDidEnter() {
+  async ionViewDidEnter() {
+    //const user = await this.storage.get('user');
     // Revisamos si el usuario ha iniciado sesion o
     // si es una instalacion fresca
     setTimeout(() => {

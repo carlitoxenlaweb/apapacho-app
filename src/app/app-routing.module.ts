@@ -36,16 +36,20 @@ const routes: Routes = [
     loadChildren: () => import('./horoscope/horoscope.module').then( m => m.HoroscopePageModule)
   },
   {
-    path: 'page-services',
-    loadChildren: () => import('./page-services/page-services.module').then( m => m.PageServicesPageModule)
-  },
-  {
     path: 'credits',
     loadChildren: () => import('./credits/credits.module').then( m => m.CreditsPageModule)
   },
   {
     path: 'profile',
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
+  },
+  {
+    path: 'credits-add',
+    loadChildren: () => import('./credits-add/credits-add.module').then( m => m.CreditsAddPageModule)
+  },
+  {
+    path: 'services-page',
+    loadChildren: () => import('./services-page/services-page.module').then( m => m.ServicesPagePageModule)
   },
 ];
 

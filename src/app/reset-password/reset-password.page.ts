@@ -42,7 +42,7 @@ export class ResetPasswordPage {
     setTimeout(() => {
       this.isLoading = false;
       this.currentForm = 'token';
-    }, 4000);
+    }, 2000);
   }
 
   validateToken () {
@@ -50,7 +50,7 @@ export class ResetPasswordPage {
     setTimeout(() => {
       this.isLoading = false;
       this.currentForm = 'confirm';
-    }, 4000);
+    }, 2000);
   }
 
   confirmReset () {
@@ -58,7 +58,7 @@ export class ResetPasswordPage {
     setTimeout(() => {
       this.isLoading = false;
       this.currentForm = 'none';
-    }, 4000);
+    }, 2000);
   }
 
   goTo (page) {

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PageServicesPageRoutingModule } from './page-services-routing.module';
+import { CreditsAddPageRoutingModule } from './credits-add-routing.module';
 
-import { PageServicesPage } from './page-services.page';
+import { CreditsAddPage } from './credits-add.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PageServicesPageRoutingModule
+    CreditsAddPageRoutingModule
   ],
-  declarations: [PageServicesPage]
+  declarations: [CreditsAddPage]
 })
-export class PageServicesPageModule {}
+export class CreditsAddPageModule {}

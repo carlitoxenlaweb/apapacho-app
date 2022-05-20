@@ -46,7 +46,7 @@ export class LoginPage {
   async login () {
     const loading = await this.loadingController.create({
       message: 'Validando...',
-      duration: 4000
+      duration: 2000
     });
     await loading.present();
 

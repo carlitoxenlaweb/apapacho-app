@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button *ngIf="selectedPlan == null">
+        <ion-menu-button></ion-menu-button>
+      </ion-button>
+      <ion-button (click)="selectPlan(null)" *ngIf="selectedPlan != null">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <p *ngIf="selectedPlan == null" class="ion-padding-horizontal ion-margin-horizontal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed mattis sapien, sed tincidunt mi. In
+    pulvinar aliquam est, ut volutpat velit iaculis at.</p>
+  <div *ngIf="selectedPlan == null" [@slideInOut]>
+    <ion-card *ngFor="let plan of planList" (click)="selectPlan(plan)">
+      <ion-card-header>
+        <ion-card-subtitle>{{ plan.credits }} Créditos</ion-card-subtitle>
+        <ion-card-title>{{ plan.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ plan.description }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="selectedPlan != null" [@slideInOutL]>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>{{ selectedPlan.credits }} Créditos</ion-card-subtitle>
+        <ion-card-title>{{ selectedPlan.name }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>{{ selectedPlan.description }}</p>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-row *ngIf="actionType == ''">
+          <ion-col><ion-button color="danger" expand="block" fill="outline" (click)="setAction('call')">Llamar</ion-button></ion-col>
+          <ion-col><ion-button color="success" expand="block" fill="outline" (click)="setAction('schedule')">Agendar</ion-button></ion-col>
+        </ion-row>
+        <ion-row *ngIf="actionType == 'call'">
+          <ion-col><ion-button color="danger" expand="block" (click)="setAction('call')">Llamar</ion-button></ion-col>
+          <ion-col><ion-button color="success" expand="block" fill="outline" (click)="setAction('schedule')">Agendar</ion-button></ion-col>
+        </ion-row>
+        <ion-row *ngIf="actionType == 'schedule'">
+          <ion-col><ion-button color="danger" expand="block" fill="outline" (click)="setAction('call')">Llamar</ion-button></ion-col>
+          <ion-col><ion-button color="success" expand="block" (click)="setAction('schedule')">Agendar</ion-button></ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="actionType == 'call'" [@fadeIn]>
+      <ion-card-header>
+        <ion-card-subtitle>Motivo del acompañamiento</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-radio-group value="reason">
+            <ion-item *ngFor="let reason of reasonList" (click)="setReason(reason)">
+              <ion-label>{{ reason.name }}</ion-label>
+              <ion-radio slot="start" [value]="reason.id"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="actionType == 'call' && selectedReason != null && selectedReason.subr.length > 0" [@fadeIn]>
+      <ion-card-header>
+        <ion-card-subtitle>{{ selectedReason.name }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-radio-group value="reason">
+            <ion-item *ngFor="let subReason of selectedReason.subr" (click)="setSubReason(reason)">
+              <ion-label>{{ subReason.name }}</ion-label>
+              <ion-radio slot="start" [value]="subReason.id"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="isReady" [@fadeIn]>
+      <ion-card-content>
+        <ion-button color="primary" expand="block" (click)="goAhead()">Continuar</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

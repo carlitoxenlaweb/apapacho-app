@@ -12,10 +12,10 @@ export class AppComponent {
 
   constructor(
     private router: Router,
-    private storageService: StorageService,
+    private storage: StorageService,
     private menu: MenuController
   ) {
-    this.storageService.init();
+    this.storage.init();
   }
 
   openLink (link: string) {

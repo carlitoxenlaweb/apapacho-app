@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-credits',
   templateUrl: './credits.page.html',
   styleUrls: ['./credits.page.scss'],
 })
-export class CreditsPage implements OnInit {
+export class CreditsPage {
 
-  constructor() { }
+  isLoading: boolean;
 
-  ngOnInit() {
+  constructor(
+    private router: Router
+  ) {
+    this.isLoading = true;
+  }
+
+  ionViewWillEnter () {
+    this.isLoading = true;
+  }
+
+  ionViewDidEnter () {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 800);
+  }
+
+  goTo (page: string) {
+    this.router.navigate([page])
   }
 
 }

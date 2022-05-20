@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { slideInOut } from '../app.animations';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterPage {
   constructor(
     private router: Router,
     private alertController: AlertController,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private storage: StorageService
   ) {
     this.mainForm = new FormGroup({
       firstname: new FormControl(''),
@@ -26,7 +28,9 @@ export class RegisterPage {
       email: new FormControl(''),
       address: new FormControl(''),
       password: new FormControl(''),
-      tos: new FormControl(''),
+      birthday: new FormControl(''),
+      birthday_hour: new FormControl(''),
+      tos: new FormControl(false, Validators.required),
     });
   }
 
@@ -41,9 +45,22 @@ export class RegisterPage {
     } else {
       const loading = await this.loadingController.create({
         message: 'Registrando...',
-        duration: 4000
+        duration: 3000
       });
       await loading.present();
+
+      const user = {
+        firstname: formVal.firstname,
+        lastname: formVal.lastname,
+        phone: formVal.phone,
+        email: formVal.email,
+        address: formVal.address,
+        birthday: formVal.birthday,
+        birthday_hour: formVal.birthday_hour,
+        password: formVal.password,
+      };
+
+      await this.storage.set('user', user);
   
       const { role, data } = await loading.onDidDismiss();
       this.goTo('home')

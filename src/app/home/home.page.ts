@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, style, animate, transition, state } from '@angular/animations';
+import { trigger, style, animate, transition } from '@angular/animations';
 import { StorageService } from '../services/storage.service';
 
 @Component({
