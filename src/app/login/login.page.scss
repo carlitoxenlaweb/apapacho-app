@@ -4,6 +4,14 @@ ion-content {
 
 img.lang-icon {
     width: 2.5rem;
+    opacity: 0.8;
+    &.lang-active {
+        border: none;
+        border-radius: 50%;
+        box-shadow: 0 0 7px 2px var(--ion-color-tertiary);
+        outline: none;
+        opacity: 1;
+    }
 }
 
 img {

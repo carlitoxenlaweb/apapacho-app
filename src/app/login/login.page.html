@@ -2,7 +2,7 @@
   <div class="ion-padding" id="cloud-layer">
     <ion-row>
       <ion-col class="ion-padding ion-text-center">
-        <img src="/assets/logo.png" />
+        <img src="/assets/logo.svg" />
       </ion-col>
     </ion-row>
     <div *ngIf="!isLoading" [@slideFromTop]>
@@ -29,16 +29,16 @@
       </form>
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-button color="light" expand="block" fill="outline" (click)="goTo('register')">Registrarse</ion-button>
-          <ion-text color="light">
+          <ion-button color="tertiary" expand="block" fill="outline" (click)="goTo('register')">Registrarse</ion-button>
+          <ion-text color="tertiary">
             <p (click)="goTo('reset-password')">¿Olvidaste tu contraseña?</p>
           </ion-text>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col class="ion-text-center">
-          <img class="lang-icon" src="/assets/icon/favicon.png">&nbsp;
-          <img class="lang-icon" src="/assets/icon/favicon.png">
+          <img [class.lang-active]="current_lang == 'es'" class="lang-icon" src="/assets/flag-uruguay.svg" (click)="setLang('es')">&nbsp;
+          <img [class.lang-active]="current_lang == 'br'" class="lang-icon" src="/assets/flag-brazil.svg" (click)="setLang('br')">
         </ion-col>
       </ion-row>
     </div>

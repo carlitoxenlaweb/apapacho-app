@@ -11,16 +11,17 @@ import { trigger, style, animate, transition, state } from '@angular/animations'
   animations: [
     trigger('slideFromTop', [
       transition(':enter', [
-          style({ transform: 'translateY(-100%)' }),
-          animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
+        style({ transform: 'translateY(-100%)' }),
+        animate('200ms ease-in', style({ transform: 'translateY(0%)' }))
       ])
-  ])
+    ])
   ]
 })
 export class LoginPage {
 
   loginForm: FormGroup;
   isLoading: boolean;
+  current_lang: string;
 
   constructor(
     private router: Router,
@@ -33,8 +34,9 @@ export class LoginPage {
     });
   }
 
-  ionViewWillEnter() {
+  ionViewWillEnter () {
     this.isLoading = true;
+    this.current_lang = 'es';
   }
 
   ionViewDidEnter () {
@@ -56,6 +58,10 @@ export class LoginPage {
 
   goTo (page) {
     this.router.navigate([page])
+  }
+
+  setLang (lang: string) {
+    this.current_lang = lang;
   }
 
 }

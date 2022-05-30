@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { IntroPage } from './intro.page';
 import { IntroPageRoutingModule } from './intro-routing.module';
 import { SwiperModule } from 'swiper/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -12,7 +13,8 @@ import { SwiperModule } from 'swiper/angular';
     FormsModule,
     IonicModule,
     IntroPageRoutingModule,
-    SwiperModule
+    SwiperModule,
+    TranslateModule
   ],
   declarations: [IntroPage]
 })
