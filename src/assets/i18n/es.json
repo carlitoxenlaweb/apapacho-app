@@ -16,5 +16,9 @@
       "title": "Bienvenido",
       "text": "This is a simple demonstration app for ngx-translate"
     }
+  },
+  "login": {
+    "username_input": "EL USUARIO X"
   }
+
 }
