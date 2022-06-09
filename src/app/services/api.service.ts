@@ -1,32 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { iPack, iPlan, iUser } from '../app.interfaces';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private apiUrl = "";
+  private apiUrl = "http://localhost:3000/";
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   async getPlans () {
-    return [
-      { id: 1, name: 'Plan 1 x Acompañamiento', credits: 100, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-      { id: 2, name: 'Plan 3 x 3 Acompañamientos', credits: 200, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-      { id: 3, name: 'Acompañamiento', credits: 300, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.' },
-    ]
+    try {
+      return await this.httpClient.get<iPlan[]>(`${this.apiUrl}plans`).toPromise();
+    } catch (e) {
+      return [];
+    }
   }
 
   async getPacks () {
-    return [
-      { id: 1, name: 'Paquete A', credits: 100, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', icon: '/assets/icon/favicon.png' },
-      { id: 2, name: 'Paquete B', credits: 200, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', icon: '/assets/icon/favicon.png' },
-      { id: 3, name: 'Paquete C', credits: 300, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', icon: '/assets/icon/favicon.png' },
-      { id: 4, name: 'Paquete D', credits: 400, description: 'Una descripción del crédito. Lorem ipsum dolor sit amet, consectetur adipiscing elit.', icon: '/assets/icon/favicon.png' },
-    ]
+    try {
+      return await this.httpClient.get<iPack[]>(`${this.apiUrl}packs`).toPromise();
+    } catch (e) {
+      return [];
+    }
   }
 
   async getReasons () {
@@ -44,4 +44,23 @@ export class ApiService {
       { id: 4, name: 'Autoestima', subr: [] }
     ]
   }
+
+  async getProfile () {
+    try {
+      return await this.httpClient.get<iUser>(`${this.apiUrl}profile`).toPromise();
+    } catch (e) {
+      return null;
+    }
+  }
+
+  async signIn (email: string, password: string) {
+    try {
+      return await this.httpClient.post<iUser>(`${this.apiUrl}auth/signin`, {
+        email, password
+      }).toPromise();
+    } catch (e) {
+      return null;
+    }
+  }
 }
+

@@ -1,4 +1,13 @@
-<ion-content fullscreen class="ion-padding" scroll-y="false">
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let lang of langList" button (click)="selectLanguage(lang.value)">
+      <ion-label>
+        {{ lang.text }}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<!-- <ion-content fullscreen class="ion-padding" scroll-y="false">
   <swiper>
     <ng-template swiperSlide>
       <div class="slide">
@@ -31,4 +40,4 @@
       </div>
     </ng-template>
   </swiper>
-</ion-content>
+</ion-content> -->

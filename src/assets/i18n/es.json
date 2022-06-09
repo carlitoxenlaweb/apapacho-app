@@ -1,24 +1,11 @@
 {
-  "intro": {
-    "page1": {
-      "title": "Bienvenido",
-      "text": "This is a simple demonstration app for ngx-translate"
-    },
-    "page2": {
-      "title": "Bienvenido",
-      "text": "This is a simple demonstration app for ngx-translate"
-    },
-    "page3": {
-      "title": "Bienvenido",
-      "text": "This is a simple demonstration app for ngx-translate"
-    },
-    "page4": {
-      "title": "Bienvenido",
-      "text": "This is a simple demonstration app for ngx-translate"
-    }
+  "general": {
+    "error_title": "Error"
   },
   "login": {
-    "username_input": "EL USUARIO X"
+    "username_input": "Correo Electrónico",
+    "password_input": "Contraseña",
+    "login_error": "Correo o contraseña incorrecta"
   }
 
 }

@@ -1,4 +1,13 @@
-:root {
+ion-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: none;
+}
+
+/* :root {
   --ion-safe-area-top: 20px;
   --ion-safe-area-bottom: 22px;
 }
@@ -35,4 +44,4 @@ p {
 
 p b {
   color: var(--ion-text-color, #000000);
-}
+} */

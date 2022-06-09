@@ -19,7 +19,6 @@ export class AppComponent {
   ) {
     this.storage.init();
     this.translate.setDefaultLang('es');
-    this.translate.use('es');
   }
 
   openLink (link: string) {

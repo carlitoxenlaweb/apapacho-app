@@ -25,6 +25,7 @@ export interface iPack {
 }
 
 export interface iUser {
+    alias: string;
     firstname: string;
     lastname: string;
     email: string;
@@ -32,4 +33,5 @@ export interface iUser {
     address: string;
     birthday: Date;
     birthday_hour: Date;
+    token?: string;
 }

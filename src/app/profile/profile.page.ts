@@ -24,6 +24,7 @@ export class ProfilePage {
     private loadingController: LoadingController
   ) {
     this.user = {
+      alias: "",
       firstname: "",
       lastname: "",
       phone: "",
@@ -34,6 +35,7 @@ export class ProfilePage {
     };
 
     this.mainForm = new FormGroup({
+      alias: new FormControl(''),
       firstname: new FormControl(''),
       lastname: new FormControl(''),
       phone: new FormControl(''),
@@ -70,6 +72,7 @@ export class ProfilePage {
     await loading.present();
     
     const user = {
+      alias: formVal.alias,
       firstname: formVal.firstname,
       lastname: formVal.lastname,
       phone: formVal.phone,

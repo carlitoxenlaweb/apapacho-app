@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { trigger, style, animate, transition, state } from '@angular/animations';
+import { TranslateService } from '@ngx-translate/core';
+import { ApiService } from '../services/api.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +28,11 @@ export class LoginPage {
 
   constructor(
     private router: Router,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private alertController: AlertController,
+    private translate: TranslateService,
+    private api: ApiService,
+    private storage: StorageService
   ) {
     this.isLoading = true;
     this.loginForm = new FormGroup({
@@ -36,7 +43,7 @@ export class LoginPage {
 
   ionViewWillEnter () {
     this.isLoading = true;
-    this.current_lang = 'es';
+    this.current_lang = this.translate.currentLang;
   }
 
   ionViewDidEnter () {
@@ -47,13 +54,30 @@ export class LoginPage {
 
   async login () {
     const loading = await this.loadingController.create({
-      message: 'Validando...',
-      duration: 2000
+      message: 'Validando...'
     });
     await loading.present();
+    
+    const formVal = this.loginForm.value;
+    const response = await this.api.signIn(formVal.username, formVal.password);
 
-    const { role, data } = await loading.onDidDismiss();
-    this.goTo('home')
+    if (!!response) {
+      await this.storage.set('token', response.token);
+      this.storage.set('user', JSON.stringify(response));
+      this.goTo('/home');
+      await loading.dismiss();
+    } else {
+      await loading.dismiss();
+      const alert = await this.alertController.create({
+        subHeader: this.translate.instant('general.error_title'),
+        message: this.translate.instant('login.login_error'),
+        buttons: ['Aceptar']
+      });
+      await alert.present();
+    }
+
+    //const { role, data } = await loading.onDidDismiss();
+    //this.goTo('home')
   }
 
   goTo (page) {
@@ -62,6 +86,8 @@ export class LoginPage {
 
   setLang (lang: string) {
     this.current_lang = lang;
+    this.translate.use(lang);
+    this.storage.set('lang', lang);
   }
 
 }
