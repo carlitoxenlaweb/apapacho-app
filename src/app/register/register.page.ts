@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 import { slideInOut } from '../app.animations';
+import { ApiService } from '../services/api.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
@@ -19,17 +21,20 @@ export class RegisterPage {
     private router: Router,
     private alertController: AlertController,
     private loadingController: LoadingController,
-    private storage: StorageService
+    private translate: TranslateService,
+    private storage: StorageService,
+    private api: ApiService
   ) {
     this.mainForm = new FormGroup({
-      firstname: new FormControl(''),
-      lastname: new FormControl(''),
-      phone: new FormControl(''),
-      email: new FormControl(''),
-      address: new FormControl(''),
-      password: new FormControl(''),
-      birthday: new FormControl(''),
-      birthday_hour: new FormControl(''),
+      alias: new FormControl('', Validators.required),
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+      email: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+      birthday: new FormControl('', Validators.required),
+      birthday_hour: new FormControl('', Validators.required),
       tos: new FormControl(false, Validators.required),
     });
   }
@@ -38,18 +43,19 @@ export class RegisterPage {
     const formVal = this.mainForm.value;
     if (!formVal.tos) {
       const alert = await this.alertController.create({
-        message: 'Debes aceptar los términos y condiciones.',
-        buttons: ['Entiendo']
+        message: this.translate.instant('register.must_accept_tos'),
+        buttons: [`${this.translate.instant('general.got_it')}`]
       });
       await alert.present();
     } else {
       const loading = await this.loadingController.create({
-        message: 'Registrando...',
+        message: this.translate.instant('general.registering'),
         duration: 3000
       });
       await loading.present();
 
-      const user = {
+      let response = await this.api.signUp({
+        alias: formVal.alias,
         firstname: formVal.firstname,
         lastname: formVal.lastname,
         phone: formVal.phone,
@@ -57,13 +63,33 @@ export class RegisterPage {
         address: formVal.address,
         birthday: formVal.birthday,
         birthday_hour: formVal.birthday_hour,
-        password: formVal.password,
-      };
+        password: formVal.password
+      });
 
-      await this.storage.set('user', user);
-  
-      const { role, data } = await loading.onDidDismiss();
-      this.goTo('home')
+      if (!!response) {
+        const user = await this.api.signIn(formVal.email, formVal.password);
+        if (!!user) {
+          await this.storage.set('token', user.token);
+          this.storage.set('user', user);
+          this.goTo('/home');
+          await loading.dismiss();
+        } else {
+          await loading.dismiss();
+          const alert = await this.alertController.create({
+            subHeader: this.translate.instant('general.error_title'),
+            message: this.translate.instant('general.request_error'),
+            buttons: [`${this.translate.instant('general.accept')}`]
+          });
+          await alert.present();
+        }
+      } else {
+        const alert = await this.alertController.create({
+          subHeader: this.translate.instant('general.error_title'),
+          message: this.translate.instant('login.login_error'),
+          buttons: [`${this.translate.instant('general.accept')}`]
+        });
+        await alert.present();
+      }
     }
   }
 

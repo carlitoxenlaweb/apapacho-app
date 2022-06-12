@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Perfil</ion-title>
+    <ion-title>{{ 'profile.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -13,48 +13,48 @@
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label position="floating">Alias</ion-label>
+              <ion-label position="floating">{{ 'profile.alias' | translate }}</ion-label>
               <ion-input formControlName="alias"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Nombre</ion-label>
+              <ion-label position="floating">{{ 'profile.firstname' | translate }}</ion-label>
               <ion-input formControlName="firstname"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Apellido</ion-label>
+              <ion-label position="floating">{{ 'profile.lastname' | translate }}</ion-label>
               <ion-input formControlName="lastname"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Teléfono</ion-label>
+              <ion-label position="floating">{{ 'profile.phone' | translate }}</ion-label>
               <ion-input type="tel" formControlName="phone"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Dirección</ion-label>
+              <ion-label position="floating">{{ 'profile.address' | translate }}</ion-label>
               <ion-input formControlName="address"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="floating">Correo</ion-label>
+              <ion-label position="floating">{{ 'profile.email' | translate }}</ion-label>
               <ion-input type="email" formControlName="email"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+              <ion-label position="stacked">{{ 'profile.birthday' | translate }}</ion-label>
               <ion-input type="date" formControlName="birthday"></ion-input>
             </ion-item>
             <ion-item>
-              <ion-label position="stacked">Hora de Nacimiento</ion-label>
+              <ion-label position="stacked">{{ 'profile.birthday_hour' | translate }}</ion-label>
               <ion-input type="time" formControlName="birthday_hour"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col class="ion-text-center">
-            <ion-button type="submit" color="primary" expand="block">Actualizar Perfil</ion-button>
+            <ion-button type="submit" color="primary" expand="block">{{ 'profile.update_button' | translate }}</ion-button>
           </ion-col>
         </ion-row>
       </form>
       <ion-row>
         <ion-col class="ion-text-center">
-          <ion-button color="danger" expand="block" fill="outline" (click)="changePassword()">Cambiar Contraseña</ion-button>
+          <ion-button color="danger" expand="block" fill="outline" (click)="changePassword()">{{ 'profile.password_button' | translate }}</ion-button>
         </ion-col>
       </ion-row>
     </ion-card-content>

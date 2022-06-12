@@ -11,38 +11,38 @@
     <ion-spinner name="dots"></ion-spinner>
   </div>
   <div *ngIf="!isLoading" [@slideInOut]>
-    <h1 class="ion-text-center ion-padding">¿Como te sientes hoy?</h1>
+    <h1 class="ion-text-center ion-padding">{{ 'home.how_you_feel' | translate }}</h1>
     <ion-card class="ion-padding-top">
       <ion-card-content>
         <div class="ion-text-center" *ngIf="currentState != 'unset'" [@fadeIn]>
           <img class="ion-margin ion-padding" [src]="currentImage" />
-          <ion-button expand="block" (click)="resetState()">Cambiar / Actualizar</ion-button>
+          <ion-button expand="block" (click)="resetState()">{{ 'home.update_button' | translate }}</ion-button>
         </div>
         <div *ngIf="currentState == 'unset'" [@fadeIn]>
           <ion-list>
             <ion-item button (click)="changeState('happy')">
-              <ion-label>Felíz</ion-label>
+              <ion-label>{{ 'state.happy' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('neutral')">
-              <ion-label>Neutral</ion-label>
+              <ion-label>{{ 'state.neutral' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('sad')">
-              <ion-label>Triste</ion-label>
+              <ion-label>{{ 'state.sad' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('love')">
-              <ion-label>Enamorado</ion-label>
+              <ion-label>{{ 'state.love' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('anxious')">
-              <ion-label>Ansioso</ion-label>
+              <ion-label>{{ 'state.anxious' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('optimistic')">
-              <ion-label>Optimista</ion-label>
+              <ion-label>{{ 'state.optimistic' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('pessimistic')">
-              <ion-label>Pesimista</ion-label>
+              <ion-label>{{ 'state.pessimistic' | translate }}</ion-label>
             </ion-item>
             <ion-item button (click)="changeState('frustrated')">
-              <ion-label>Frustrado</ion-label>
+              <ion-label>{{ 'state.frustrated' | translate }}</ion-label>
             </ion-item>
           </ion-list>
         </div>
@@ -50,8 +50,8 @@
     </ion-card>
     <ion-card *ngIf="currentState != 'unset'" [@fadeIn]>
       <ion-card-header>
-        <ion-card-subtitle>En base a tu estado de animo</ion-card-subtitle>
-        <ion-card-title>Algunas sugerencias...</ion-card-title>
+        <ion-card-subtitle>{{ 'home.subtitle' | translate }}</ion-card-subtitle>
+        <ion-card-title>{{ 'home.title' | translate }}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>

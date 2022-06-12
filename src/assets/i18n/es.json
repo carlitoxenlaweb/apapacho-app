@@ -1,11 +1,68 @@
 {
   "general": {
-    "error_title": "Error"
+    "error_title": "Error",
+    "request_error": "Error al realizar registro, por favor intenta de nuevo en unos minutos...",
+    "back": "Volver",
+    "accept": "Aceptar",
+    "cancel": "Cancelar",
+    "update": "Actualizar",
+    "updated": "Datos actualizados",
+    "updating": "Actualizando...",
+    "loading": "Cargando...",
+    "validating": "Validando...",
+    "registering": "Registrando...",
+    "got_it": "Entiendo"
+  },
+  "state": {
+    "happy": "Felíz",
+    "neutral": "Neutral",
+    "sad": "Triste",
+    "love": "Enamorado",
+    "anxious": "Ansioso",
+    "optimistic": "Optimista",
+    "pessimistic": "Pesimista",
+    "frustrated": "Frustrado"
+  },
+  "home": {
+    "how_you_feel": "¿Como te sientes hoy?",
+    "update_button": "Cambiar / Actualizar",
+    "subtitle": "En base a tu estado de animo",
+    "title": "Algunas sugerencias..."
   },
   "login": {
     "username_input": "Correo Electrónico",
     "password_input": "Contraseña",
+    "login_button": "Entrar",
+    "register_button": "Registrarse",
+    "forgot_button": "¿Olvidaste tu contraseña?",
     "login_error": "Correo o contraseña incorrecta"
+  },
+  "register": {
+    "title": "Crear Cuenta",
+    "accept_tos": "Acepto los términos y condiciones",
+    "text_tos": "Ver términos y condiciones",
+    "create_button": "Crear Cuenta",
+    "must_accept_tos": "Debes aceptar los términos y condiciones."
+  },
+  "profile": {
+    "alias": "Nombre de Usuario / Alias",
+    "firstname": "Nombre",
+    "lastname": "Apellido",
+    "birthday": "Fecha de Nacimiento",
+    "birthday_hour": "Hora de Nacimiento",
+    "phone": "Teléfono",
+    "address": "Dirección",
+    "email": "Correo",
+    "password": "Contraseña",
+    "new_password": "Nueva Contraseña",
+    "update_button": "Actualizar Perfil",
+    "password_button": "Cambiar Contraseña",
+    "password_modal": "Cambiar Contraseña",
+    "password_updated": "Contraseña actualizada",
+    "title": "Perfil"
+  },
+  "call": {
+    "connecting": "Conectando...",
+    "connected": "Conectado"
   }
-
 }

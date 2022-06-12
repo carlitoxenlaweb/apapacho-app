@@ -34,4 +34,10 @@ export interface iUser {
     birthday: Date;
     birthday_hour: Date;
     token?: string;
+    password?: string;
+}
+
+export interface iResponse {
+    error?: boolean;
+    message?: string;
 }

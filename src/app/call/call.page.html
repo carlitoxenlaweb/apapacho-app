@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-list>
+    <ion-row>
+      <ion-col *ngIf="!connected">{{ 'call.connecting' | translate }}</ion-col>
+      <ion-col *ngIf="connected">{{ 'call.connected' | translate }}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="connected">
+      <ion-col>{{ formattedTimer }}</ion-col>
+    </ion-row>
+  </ion-list>
+</ion-content>

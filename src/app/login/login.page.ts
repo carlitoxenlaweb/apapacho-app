@@ -54,7 +54,7 @@ export class LoginPage {
 
   async login () {
     const loading = await this.loadingController.create({
-      message: 'Validando...'
+      message: this.translate.instant('general.validating')
     });
     await loading.present();
     
@@ -63,7 +63,7 @@ export class LoginPage {
 
     if (!!response) {
       await this.storage.set('token', response.token);
-      this.storage.set('user', JSON.stringify(response));
+      this.storage.set('user', response);
       this.goTo('/home');
       await loading.dismiss();
     } else {
@@ -71,7 +71,7 @@ export class LoginPage {
       const alert = await this.alertController.create({
         subHeader: this.translate.instant('general.error_title'),
         message: this.translate.instant('login.login_error'),
-        buttons: ['Aceptar']
+        buttons: [`${this.translate.instant('general.accept')}`]
       });
       await alert.present();
     }

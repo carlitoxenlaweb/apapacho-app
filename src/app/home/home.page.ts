@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, style, animate, transition } from '@angular/animations';
 import { StorageService } from '../services/storage.service';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,8 @@ export class HomePage implements OnInit {
   isLoading: boolean;
 
   constructor(
-    private storageService: StorageService
+    private storage: StorageService,
+    private api: ApiService
   ) {
     this.isLoading = true;
     this.currentState = "unset";
@@ -38,7 +40,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit () {
     setTimeout(() => this.isLoading = false, 800);
-    const storedValue = await this.storageService.get('currentState');
+    const storedValue = await this.storage.get('currentState');
     if (!!storedValue) {
       this.currentState = storedValue;
       this.setCurrentImage();
@@ -51,9 +53,12 @@ export class HomePage implements OnInit {
   }
 
   async changeState (state: string) {
+    this.isLoading = true;
     this.currentState = state;
-    await this.storageService.set('currentState', state);
+    await this.storage.set('currentState', state);
+    await this.api.updateState(state);
     this.setCurrentImage();
+    this.isLoading = false;
   }
 
   private setCurrentImage () {

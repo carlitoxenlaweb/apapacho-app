@@ -33,6 +33,7 @@ export class AppComponent {
 
   logout () {
     this.goTo('/login');
+    this.storage.clear();
     this.menu.close();
   }
 
