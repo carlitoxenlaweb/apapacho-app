@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'app.apapacho.com',
-  appName: 'app',
+  appName: 'apapacho',
   webDir: 'www',
   bundledWebRuntime: false
 };

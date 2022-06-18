@@ -44,7 +44,7 @@ export class RegisterPage {
     if (!formVal.tos) {
       const alert = await this.alertController.create({
         message: this.translate.instant('register.must_accept_tos'),
-        buttons: [`${this.translate.instant('general.got_it')}`]
+        buttons: [this.translate.instant('general.got_it')]
       });
       await alert.present();
     } else {
@@ -78,7 +78,7 @@ export class RegisterPage {
           const alert = await this.alertController.create({
             subHeader: this.translate.instant('general.error_title'),
             message: this.translate.instant('general.request_error'),
-            buttons: [`${this.translate.instant('general.accept')}`]
+            buttons: [this.translate.instant('general.accept')]
           });
           await alert.present();
         }
@@ -86,7 +86,7 @@ export class RegisterPage {
         const alert = await this.alertController.create({
           subHeader: this.translate.instant('general.error_title'),
           message: this.translate.instant('login.login_error'),
-          buttons: [`${this.translate.instant('general.accept')}`]
+          buttons: [this.translate.instant('general.accept')]
         });
         await alert.present();
       }

@@ -11,7 +11,9 @@
     "loading": "Cargando...",
     "validating": "Validando...",
     "registering": "Registrando...",
-    "got_it": "Entiendo"
+    "sending": "Enviando...",
+    "got_it": "Entiendo",
+    "credits": "Créditos"
   },
   "state": {
     "happy": "Felíz",
@@ -23,11 +25,39 @@
     "pessimistic": "Pesimista",
     "frustrated": "Frustrado"
   },
+  "reason": {
+    "depretion": "Depresión",
+    "loneliness": "Soledad",
+    "distress": "Angustia",
+    "family_conflict": "Conflicto Familiar",
+    "couple": "Pareja",
+    "childrens": "Hijos",
+    "infidelity": "Infidelidad",
+    "family": "Familia",
+    "self_steem": "Autoestima"
+  },
+  "menu": {
+    "how_you_feel": "¿Como te sientes hoy?",
+    "blog_link": "Sanemos por dentro",
+    "talk_now": "Hablar con un amigo",
+    "horoscope": "Horoscopo",
+    "credits": "Créditos",
+    "profile": "Perfil",
+    "exit": "Salir",
+    "services": {
+      "menu_text": "Servicios",
+      "sub_menu_a": "Apapacho",
+      "sub_menu_b": "Tarot",
+      "sub_menu_c": "Carta Astral",
+      "sub_menu_d": "Sugerencias"
+    }
+  },
   "home": {
     "how_you_feel": "¿Como te sientes hoy?",
     "update_button": "Cambiar / Actualizar",
     "subtitle": "En base a tu estado de animo",
-    "title": "Algunas sugerencias..."
+    "title": "Algunas sugerencias...",
+    "talk_now": "Habla con un amigo ahora"
   },
   "login": {
     "username_input": "Correo Electrónico",
@@ -61,8 +91,64 @@
     "password_updated": "Contraseña actualizada",
     "title": "Perfil"
   },
+  "credits": {
+    "title": "Créditos",
+    "add-title": "Agregar Créditos",
+    "load_error": "Error al cargar créditos disponibles, por favor intenta de nuevo...",
+    "no_credits": "No cuentas con los créditos suficientes, por favor recarga...",
+    "availables": "Créditos Disponibles",
+    "seggestions": "Algunas sugerencias",
+    "main_text_a": "Aquí en apapacho amigo no estamos para analizarte ni para juzgarte, tendrás con nosotros de forma totalmente confidencial y anónima un amigo para escucharte, para apoyarte, alguien con quien hablar",
+    "main_text_b": "Compra créditos para acceder a nuestro servicio de acompañamiento en apapacho las 24 horas, donde podrás hablar telefónicamente con un amigo que te acompañara en las buenas y en las malas",
+    "pack_basic": {
+      "name": "PAQUETE BASICO US$ 15",
+      "credits": "100 créditos",
+      "description_a": "Esto equivale a una llamada de acompañamiento de 20 minutos",
+      "description_b": "Después de los 20 minutos en llamada de acompañamiento, cada minuto son 5 créditos"
+    },
+    "pack_standar": {
+      "name": "PAQUETE STANDART US$ 67,5",
+      "credits": "500 créditos",
+      "description_a": "Esto equivale a cinco llamadas de acompañamiento de 20 minutos",
+      "description_b": "Después de los 20 minutos en llamada de acompañamiento, cada minuto son 5 créditos"
+    },
+    "pack_premium": {
+      "name": "PAQUETE PREMIUM US$ 120",
+      "credits": "1000 créditos",
+      "description_a": "Esto equivale a diez llamadas de acompañamiento de 20 minutos",
+      "description_b": "Después de los 20 minutos en llamada de acompañamiento, cada minuto son 5 créditos"
+    }
+  },
+  "services": {
+    "title": "Servicios",
+    "call": "Llamar",
+    "schedule": "Agendar",
+    "reason": "Motivo del acompañamiento",
+    "continue": "Continuar",
+    "who_wants": "¿Con quien te gustaría hablar?",
+    "persons": {
+      "man": "Masculino",
+      "woman": "Femenino",
+      "friend": "Amig@ Favorito",
+      "dont_care": "Irrelevante"
+    },
+    "talk": {
+      "title": "Hablar con un amigo",
+      "main_text_a": "Muchas veces en nuestra vida necesitamos alguien para conversar, para que nos escuche, nos entienda y porque no, para aconsejarnos, ya que tiene una mirada objetiva, sin juicios y libre de prejuicios",
+      "main_text_b": "En Apapacho Amigo, tendrás de forma anónima y confidencial un Amig@ que   estará dispuesto a escucharte, comprenderte y platicar contigo cuando lo necesites",
+      "call": "Llamar Ahora",
+      "schedule": "Agenda tu llamada"
+    }
+  },
   "call": {
     "connecting": "Conectando...",
-    "connected": "Conectado"
+    "connected": "Conectado",
+    "finished": "Llamada Finalizada",
+    "send_qualification": "Enviar Calificación",
+    "send": "Calificar",
+    "friendly": "Amigo",
+    "quality": "Calidad de la llamada",
+    "comments": "Comentarios",
+    "add_friend": "¿Quieres agregar este amigo a Favoritos?"
   }
 }

@@ -16,8 +16,8 @@ import { ApiService } from './api.service';
 @Injectable()
 export class ApiInterceptor implements HttpInterceptor {
 
-    private isRefreshing = false;
-    private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+    /* private isRefreshing = false;
+    private refreshTokenSubject: BehaviorSubject<any> = new BehaviorSubject<any>(null); */
 
     constructor(
         public storage: StorageService,
@@ -57,7 +57,7 @@ export class ApiInterceptor implements HttpInterceptor {
                 return next.handle(request).pipe(
                     map((event: HttpEvent<any>) => {
                         if (event instanceof HttpResponse) {
-                            console.log('interceptor event--->>>', event);
+                            //console.log('interceptor event--->>>', event);
                         }
                         return event;
                     }),

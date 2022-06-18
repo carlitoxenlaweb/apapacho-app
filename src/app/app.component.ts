@@ -3,13 +3,18 @@ import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { StorageService } from './services/storage.service';
 import { TranslateService } from '@ngx-translate/core';
+import { trigger, style, animate, transition } from '@angular/animations';
+import { fadeIn } from './app.animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
+  animations: [fadeIn]
 })
 export class AppComponent {
+
+  expandServiceLevel = false;
 
   constructor(
     private router: Router,
@@ -35,6 +40,10 @@ export class AppComponent {
     this.goTo('/login');
     this.storage.clear();
     this.menu.close();
+  }
+
+  toggleSubMenu (service: string) {
+    this.expandServiceLevel = !this.expandServiceLevel;
   }
 
 }

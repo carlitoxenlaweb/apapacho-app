@@ -6,8 +6,8 @@
   /** primary **/
   --ion-color-primary: #ee771c;
   --ion-color-primary-rgb: 238, 119, 28;
-  --ion-color-primary-contrast: #000000;
-  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #d16919;
   --ion-color-primary-tint: #f08533;
 
@@ -75,6 +75,14 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  /** light blue **/
+	--ion-color-light-blue: #53c6fd;
+  --ion-color-light-blue-rgb: 83,198,253;
+  --ion-color-light-blue-contrast: #ffffff;
+  --ion-color-light-blue-contrast-rgb: 255, 255, 255;
+  --ion-color-light-blue-shade: #49aedf;
+  --ion-color-light-blue-tint: #64ccfd;
+
   /** custom **/
   --ion-toolbar-background: var(--ion-color-primary);
   --ion-toolbar-color: var(--ion-color-light);
@@ -89,8 +97,8 @@
   body {
     --ion-color-primary: #ee771c;
     --ion-color-primary-rgb: 238, 119, 28;
-    --ion-color-primary-contrast: #ffffff;
-    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-contrast: #000000;
+    --ion-color-primary-contrast-rgb: 0, 0, 0;
     --ion-color-primary-shade: #d16919;
     --ion-color-primary-tint: #f08533;
 
@@ -149,6 +157,13 @@
     --ion-color-light-contrast-rgb: 255, 255, 255;
     --ion-color-light-shade: #1e2023;
     --ion-color-light-tint: #383a3e;
+
+    --ion-color-light-blue: #53c6fd;
+    --ion-color-light-blue-rgb: 83,198,253;
+    --ion-color-light-blue-contrast: #000000;
+    --ion-color-light-blue-contrast-rgb: 0, 0, 0;
+    --ion-color-light-blue-shade: #49aedf;
+    --ion-color-light-blue-tint: #64ccfd;
   }
 
   /*
@@ -236,4 +251,13 @@
 
     --ion-card-background: #1e1e1e;
   }
+}
+
+.ion-color-light-blue {
+	--ion-color-base: var(--ion-color-light-blue);
+	--ion-color-base-rgb: var(--ion-color-light-blue-rgb);
+	--ion-color-contrast: var(--ion-color-light-blue-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-light-blue-contrast-rgb);
+	--ion-color-shade: var(--ion-color-light-blue-shade);
+	--ion-color-tint: var(--ion-color-light-blue-tint);
 }

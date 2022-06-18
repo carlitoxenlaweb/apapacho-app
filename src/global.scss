@@ -36,3 +36,7 @@ ion-content {
 ion-item {
     --background: none;
 }
+
+.no-ripple {
+    --ripple-color: transparent;
+}

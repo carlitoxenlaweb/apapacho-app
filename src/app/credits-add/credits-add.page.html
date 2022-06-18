@@ -8,35 +8,43 @@
         <ion-icon slot="icon-only" name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Agregar Créditos</ion-title>
+    <ion-title>{{ 'credits.add-title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <p *ngIf="selectedPack == null" class="ion-padding-horizontal ion-margin-horizontal ion-text-center">
+    {{ 'credits.main_text_a' | translate }}
+  </p>
+  <p *ngIf="selectedPack == null" class="ion-padding-horizontal ion-margin-horizontal ion-text-center">
+    {{ 'credits.main_text_b' | translate }}
+  </p>
   <div *ngIf="selectedPack == null" [@slideInOut]>
     <ion-card *ngFor="let pack of packList" (click)="selectPack(pack)">
       <ion-card-header>
-        <ion-card-subtitle>{{ pack.credits }} Créditos</ion-card-subtitle>
+        <ion-card-subtitle>{{ pack.credits }}</ion-card-subtitle>
         <ion-card-title>{{ pack.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <div class="ion-text-center ion-padding-bottom">
+        <!-- <div class="ion-text-center ion-padding-bottom">
           <img [src]="pack.icon" />
-        </div>
-        <p>{{ pack.description }}</p>
+        </div> -->
+        <p>{{ pack.description_a }}</p>
+        <p>{{ pack.description_b }}</p>
       </ion-card-content>
     </ion-card>
   </div>
   <div *ngIf="selectedPack != null" [@slideInOutL]>
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>{{ selectedPack.credits }} Créditos</ion-card-subtitle>
+        <ion-card-subtitle>{{ selectedPack.credits }}</ion-card-subtitle>
         <ion-card-title>{{ selectedPack.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <div class="ion-text-center ion-padding-bottom">
+        <!-- <div class="ion-text-center ion-padding-bottom">
           <img [src]="selectedPack.icon" />
-        </div>
-        <p>{{ selectedPack.description }}</p>
+        </div> -->
+        <p>{{ selectedPack.description_a }}</p>
+        <p>{{ selectedPack.description_b }}</p>
       </ion-card-content>
     </ion-card>
     <ion-card>

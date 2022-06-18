@@ -1,11 +1,33 @@
+<ion-header *ngIf="finished" [@fadeIn]>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>{{ 'call.finished' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content>
-  <ion-list>
+  <ion-list [class.bg-primary]="!finished" *ngIf="!finished" [@fadeIn]>
     <ion-row>
       <ion-col *ngIf="!connected">{{ 'call.connecting' | translate }}</ion-col>
       <ion-col *ngIf="connected">{{ 'call.connected' | translate }}</ion-col>
     </ion-row>
     <ion-row *ngIf="connected">
       <ion-col>{{ formattedTimer }}</ion-col>
+    </ion-row>
+    <ion-row *ngIf="connected">
+      <ion-col>
+        <ion-button color="dark" expand="block" (click)="endCall()">Finalizar Prueba</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-list>
+  <ion-list *ngIf="finished" [@fadeIn]>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" fill="outline" (click)="qualify()">{{ 'call.send_qualification' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button color="primary" expand="block" (click)="goHome()">{{ 'services.continue' | translate }}</ion-button>
+      </ion-col>
     </ion-row>
   </ion-list>
 </ion-content>

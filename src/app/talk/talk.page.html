@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-menu-button></ion-menu-button>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ 'services.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <p *ngIf="selectedPack == null" class="ion-padding-horizontal ion-margin-horizontal ion-text-center">
+        {{ 'services.talk.main_text_a' | translate }}
+      </p>
+      <br/>
+      <p *ngIf="selectedPack == null" class="ion-padding-horizontal ion-margin-horizontal ion-text-center">
+        {{ 'services.talk.main_text_b' | translate }}
+      </p>
+    </ion-card-content>
+  </ion-card>  
+  <ion-card>
+    <ion-card-content>
+      <ion-row *ngIf="actionType == ''">
+        <ion-col><ion-button color="primary" expand="block" fill="outline" (click)="setAction('call')">{{ 'services.talk.call' | translate }}</ion-button></ion-col>
+        <ion-col><ion-button color="light-blue" expand="block" fill="outline" (click)="setAction('schedule')">{{ 'services.talk.schedule' | translate }}</ion-button></ion-col>
+      </ion-row>
+      <ion-row *ngIf="actionType == 'call'">
+        <ion-col><ion-button color="primary" expand="block" (click)="setAction('call')">{{ 'services.talk.call' | translate }}</ion-button></ion-col>
+        <ion-col><ion-button color="light-blue" expand="block" fill="outline" (click)="setAction('schedule')">{{ 'services.talk.schedule' | translate }}</ion-button></ion-col>
+      </ion-row>
+      <ion-row *ngIf="actionType == 'schedule'">
+        <ion-col><ion-button color="primary" expand="block" fill="outline" (click)="setAction('call')">{{ 'services.talk.call' | translate }}</ion-button></ion-col>
+        <ion-col><ion-button color="light-blue" expand="block" (click)="setAction('schedule')">{{ 'services.talk.schedule' | translate }}</ion-button></ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="actionType != ''" [@fadeIn]>
+    <ion-card-header>
+      <ion-card-subtitle>{{ 'services.who_wants' | translate }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngIf="actionType == 'call'">
+        <ion-radio-group value="call">
+          <ion-item *ngFor="let personCall of personCallList" (click)="setPerson(personCall)">
+            <ion-label>{{ personCall }}</ion-label>
+            <ion-radio slot="start" [value]="personCall"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-list *ngIf="actionType == 'schedule'">
+        <ion-radio-group value="schedule">
+          <ion-item *ngFor="let personSchedule of personScheduleList" (click)="setPerson(personSchedule)">
+            <ion-label>{{ personSchedule }}</ion-label>
+            <ion-radio slot="start" [value]="personSchedule"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="actionType != '' && selectedPerson != ''" [@fadeIn]>
+    <ion-card-header>
+      <ion-card-subtitle>{{ 'services.reason' | translate }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group value="reason">
+          <ion-item *ngFor="let reason of reasonList" (click)="setReason(reason)">
+            <ion-label>{{ reason.name }}</ion-label>
+            <ion-radio slot="start" [value]="reason.id"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="actionType != '' && selectedPerson != '' && selectedReason != null && selectedReason.subr.length > 0" [@fadeIn]>
+    <ion-card-header>
+      <ion-card-subtitle>{{ selectedReason.name }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-radio-group value="reason">
+          <ion-item *ngFor="let subReason of selectedReason.subr" (click)="setSubReason(reason)">
+            <ion-label>{{ subReason.name }}</ion-label>
+            <ion-radio slot="start" [value]="subReason.id"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="isReady" [@fadeIn]>
+    <ion-card-content>
+      <ion-button color="primary" expand="block" (click)="goAhead()">{{ 'services.continue' | translate }}</ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

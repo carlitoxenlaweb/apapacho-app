@@ -3,6 +3,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
 import { Router } from '@angular/router';
 import { iPack } from '../app.interfaces';
 import { ApiService } from '../services/api.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-credits-add',
@@ -33,13 +34,22 @@ export class CreditsAddPage {
 
   constructor(
     private router: Router,
-    private api: ApiService
+    private api: ApiService,
+    private translate: TranslateService
   ) {
     this.selectedPack = null;
   }
 
   async ionViewWillEnter () {
     this.packList = await this.api.getPacks();
+    this.packList = this.packList.map(p => {
+      const pack = this.getLangPack(p.name.toLowerCase());
+      p.name = this.translate.instant(`credits.pack_${pack}.name`);
+      p.credits = this.translate.instant(`credits.pack_${pack}.credits`);
+      p.description_a = this.translate.instant(`credits.pack_${pack}.description_a`);
+      p.description_b = this.translate.instant(`credits.pack_${pack}.description_b`);
+      return p;
+    })
     this.selectedPack = null;
   }
 
@@ -49,6 +59,14 @@ export class CreditsAddPage {
 
   goTo (page: string) {
     this.router.navigate([page])
+  }
+
+  private getLangPack (title: string) {
+    switch (title) {
+      case 'basico': return "basic";
+      case 'standart': return "standar";
+      case 'premium': return "premium";
+    }
   }
 
 }

@@ -71,7 +71,7 @@ export class LoginPage {
       const alert = await this.alertController.create({
         subHeader: this.translate.instant('general.error_title'),
         message: this.translate.instant('login.login_error'),
-        buttons: [`${this.translate.instant('general.accept')}`]
+        buttons: [this.translate.instant('general.accept')]
       });
       await alert.present();
     }

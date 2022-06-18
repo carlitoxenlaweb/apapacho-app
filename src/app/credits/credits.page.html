@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Créditos</ion-title>
+    <ion-title>{{ 'credits.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -13,14 +13,14 @@
         <ion-spinner name="dots"></ion-spinner>
       </div>
       <div *ngIf="!isLoading">
-        <h1>N</h1>
-        <h4>Créditos Disponibles</h4>
+        <h1>{{ currentCredits }}</h1>
+        <h4>{{ 'credits.availables' | translate }}</h4>
       </div>
     </ion-card-content>
   </ion-card>
   <ion-card class="ion-padding-top">
     <ion-card-header>
-      <ion-card-title>Algunas sugerencias</ion-card-title>
+      <ion-card-title>{{ 'credits.seggestions' | translate }}</ion-card-title>
     </ion-card-header>
     <ion-card-content class="ion-text-center">
       Aqui el listado de sugerencias......

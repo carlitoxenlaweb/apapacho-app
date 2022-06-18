@@ -21,6 +21,10 @@ export class SplashPage {
   ) { }
 
   async ionViewDidEnter () {
+    setTimeout(() => { this.init() }, 2000);
+  }
+
+  private async init() {
     const lang = await this.storage.get('lang');
     if (!!lang) this.translate.use(lang);
 

@@ -1,0 +1,72 @@
+<ion-content>
+  <ion-row class="ion-margin-bottom ion-padding-horizontal">
+    <ion-col class="ion-text-center">
+      <h4>{{ 'call.finished' | translate }}</h4>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-top">
+    <ion-col class="ion-text-center"><b>{{ 'call.friendly' | translate }}</b></ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-bottom">
+    <ion-col class="ion-text-center">
+      <ion-button (click)="setFriendly(0)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="friendly[0] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setFriendly(1)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="friendly[1] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setFriendly(2)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="friendly[2] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setFriendly(3)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="friendly[3] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setFriendly(4)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="friendly[4] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-top">
+    <ion-col class="ion-text-center"><b>{{ 'call.quality' | translate }}</b></ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-bottom">
+    <ion-col class="ion-text-center">
+      <ion-button (click)="setQuality(0)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="quality[0] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setQuality(1)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="quality[1] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setQuality(2)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="quality[2] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setQuality(3)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="quality[3] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button (click)="setQuality(4)" fill="clear" class="no-ripple">
+        <ion-icon slot="icon-only" [name]="quality[4] ? 'star' : 'star-outline'"></ion-icon>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-top ion-padding-horizontal">
+    <ion-col class="ion-text-center">
+      <ion-item>
+        <ion-label position="floating">{{ 'call.comments' | translate }}</ion-label>
+        <ion-textarea [(ngModel)]="comments"></ion-textarea>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin-bottom ion-padding-horizontal">
+    <ion-col class="ion-text-center">
+      <ion-item class="no-ripple">
+        <ion-label>{{ 'call.add_friend' | translate }}</ion-label>
+        <ion-checkbox slot="start" [(ngModel)]="addFriend"></ion-checkbox>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-margin ion-padding">
+    <ion-col class="ion-text-center">
+      <ion-button color="primary" expand="block" (click)="send()">{{ 'call.send_qualification' | translate }}</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>

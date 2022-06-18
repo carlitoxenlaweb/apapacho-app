@@ -21,6 +21,8 @@ export interface iPack {
     name: string;
     credits: number;
     description: string;
+    description_a?: string;
+    description_b?: string;
     icon: string;
 }
 

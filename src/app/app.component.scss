@@ -1,3 +1,9 @@
 ion-list {
     background: var(--ion-color-light);
 }
+
+.icon-menu {
+    color: var(--detail-icon-color);
+    font-size: var(--detail-icon-font-size);
+    opacity: var(--detail-icon-opacity);
+}

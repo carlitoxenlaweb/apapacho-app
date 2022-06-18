@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-menu side="start" menuId="main" contentId="main" swipeGesture="false" type="overlay">
+  <ion-menu side="start" menuId="main" contentId="main" swipeGesture="false" type="reveal">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Opciones</ion-title>
@@ -7,40 +7,72 @@
     </ion-header>
     <ion-content>
       <ion-list>
-        <ion-item detail (click)="openLink('https://apapachoamigo.com/')">
-          <ion-icon name="book-outline" slot="start"></ion-icon>
-          <label>
-            Visitar Blog
-          </label>
-        </ion-item>
         <ion-item detail (click)="goTo('/home')">
           <ion-icon name="trail-sign-outline" slot="start"></ion-icon>
           <label>
-            ¿Como te sientes hoy?
+            {{ 'menu.how_you_feel' | translate }}
           </label>
         </ion-item>
-        <ion-item detail (click)="goTo('/services-page')">
+        <ion-item detail (click)="openLink('https://apapachoamigo.com/')">
+          <ion-icon name="book-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.blog_link' | translate }}
+          </label>
+        </ion-item>
+        <ion-item detail (click)="goTo('/talk')">
           <ion-icon name="extension-puzzle-outline" slot="start"></ion-icon>
           <label>
-            Servicios
-          </label>
-        </ion-item>
-        <ion-item detail (click)="goTo('/credits')">
-          <ion-icon name="cash-outline" slot="start"></ion-icon>
-          <label>
-            Créditos
+            {{ 'menu.talk_now' | translate }}
           </label>
         </ion-item>
         <ion-item detail (click)="goTo('/horoscope')">
           <ion-icon name="star-half-outline" slot="start"></ion-icon>
           <label>
-            Horóscopo
+            {{ 'menu.horoscope' | translate }}
+          </label>
+        </ion-item>
+        <ion-item (click)="toggleSubMenu('services')">
+          <ion-icon class="icon-menu" name="chevron-up-outline" slot="end" *ngIf="expandServiceLevel"></ion-icon>
+          <ion-icon class="icon-menu" name="chevron-down-outline" slot="end" *ngIf="!expandServiceLevel"></ion-icon>
+          <ion-icon name="grid-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.services.menu_text' | translate }}
+          </label>
+        </ion-item>
+        <ion-item (click)="goTo('/services-page')" *ngIf="expandServiceLevel" [@fadeIn]>
+          <ion-icon name="remove-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.services.sub_menu_a' | translate }}
+          </label>
+        </ion-item>
+        <ion-item *ngIf="expandServiceLevel" [@fadeIn]>
+          <ion-icon name="remove-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.services.sub_menu_b' | translate }}
+          </label>
+        </ion-item>
+        <ion-item *ngIf="expandServiceLevel" [@fadeIn]>
+          <ion-icon name="remove-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.services.sub_menu_c' | translate }}
+          </label>
+        </ion-item>
+        <ion-item *ngIf="expandServiceLevel" [@fadeIn]>
+          <ion-icon name="remove-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.services.sub_menu_d' | translate }}
+          </label>
+        </ion-item>
+        <ion-item detail (click)="goTo('/credits')">
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          <label>
+            {{ 'menu.credits' | translate }}
           </label>
         </ion-item>
         <ion-item detail (click)="goTo('/profile')">
           <ion-icon name="person-outline" slot="start"></ion-icon>
           <label>
-            Perfil
+            {{ 'menu.profile' | translate }}
           </label>
         </ion-item>
       </ion-list>
@@ -51,7 +83,7 @@
           <ion-item button (click)="logout()">
             <ion-icon name="log-out-outline" slot="start"></ion-icon>
             <label>
-              Salir
+              {{ 'menu.exit' | translate }}
             </label>
           </ion-item>
         </ion-list>

@@ -11,7 +11,8 @@
     <ion-spinner name="dots"></ion-spinner>
   </div>
   <div *ngIf="!isLoading" [@slideInOut]>
-    <h1 class="ion-text-center ion-padding">{{ 'home.how_you_feel' | translate }}</h1>
+    <h1 class="ion-text-center ion-padding-horizontal">{{ 'home.how_you_feel' | translate }}</h1>
+    <h4 class="ion-text-center">Cuéntanos como te sientes para que podamos ayudarte y/o acompañarte</h4>
     <ion-card class="ion-padding-top">
       <ion-card-content>
         <div class="ion-text-center" *ngIf="currentState != 'unset'" [@fadeIn]>
@@ -63,5 +64,10 @@
         </p>
       </ion-card-content>
     </ion-card>
+    <ion-row>
+      <ion-col class="ion-padding">
+        <ion-button expand="block" routerLink="/services-page">{{ 'home.talk_now' | translate }}</ion-button>
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>

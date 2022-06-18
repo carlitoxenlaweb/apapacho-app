@@ -91,7 +91,7 @@ export class ProfilePage {
       this.user = user;
       const alert = await this.alertController.create({
         message: this.translate.instant('general.updated'),
-        buttons: [`${this.translate.instant('general.accept')}`]
+        buttons: [this.translate.instant('general.accept')]
       });
       await loading.dismiss();
       await alert.present();
@@ -100,7 +100,7 @@ export class ProfilePage {
       const alert = await this.alertController.create({
         subHeader: this.translate.instant('general.error_title'),
         message: this.translate.instant('login.login_error'),
-        buttons: [`${this.translate.instant('general.accept')}`]
+        buttons: [this.translate.instant('general.accept')]
       });
       await alert.present();
     }
@@ -140,7 +140,7 @@ export class ProfilePage {
 
     const alert = await this.alertController.create({
       message: this.translate.instant('profile.password_updated'),
-      buttons: [`${this.translate.instant('general.accept')}`]
+      buttons: [this.translate.instant('general.accept')]
     });
     await alert.present();    
   }

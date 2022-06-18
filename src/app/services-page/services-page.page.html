@@ -8,16 +8,14 @@
         <ion-icon slot="icon-only" name="close-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Servicios</ion-title>
+    <ion-title>{{ 'services.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <p *ngIf="selectedPlan == null" class="ion-padding-horizontal ion-margin-horizontal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed mattis sapien, sed tincidunt mi. In
-    pulvinar aliquam est, ut volutpat velit iaculis at.</p>
   <div *ngIf="selectedPlan == null" [@slideInOut]>
     <ion-card *ngFor="let plan of planList" (click)="selectPlan(plan)">
       <ion-card-header>
-        <ion-card-subtitle>{{ plan.credits }} Créditos</ion-card-subtitle>
+        <ion-card-subtitle>{{ plan.credits }} {{ 'general.credits' | translate }}</ion-card-subtitle>
         <ion-card-title>{{ plan.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
@@ -28,7 +26,7 @@
   <div *ngIf="selectedPlan != null" [@slideInOutL]>
     <ion-card>
       <ion-card-header>
-        <ion-card-subtitle>{{ selectedPlan.credits }} Créditos</ion-card-subtitle>
+        <ion-card-subtitle>{{ selectedPlan.credits }} {{ 'general.credits' | translate }}</ion-card-subtitle>
         <ion-card-title>{{ selectedPlan.name }}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
@@ -38,22 +36,45 @@
     <ion-card>
       <ion-card-content>
         <ion-row *ngIf="actionType == ''">
-          <ion-col><ion-button color="danger" expand="block" fill="outline" (click)="setAction('call')">Llamar</ion-button></ion-col>
-          <ion-col><ion-button color="success" expand="block" fill="outline" (click)="setAction('schedule')">Agendar</ion-button></ion-col>
+          <ion-col><ion-button color="primary" expand="block" fill="outline" (click)="setAction('call')">{{ 'services.call' | translate }}</ion-button></ion-col>
+          <ion-col><ion-button color="light-blue" expand="block" fill="outline" (click)="setAction('schedule')">{{ 'services.schedule' | translate }}</ion-button></ion-col>
         </ion-row>
         <ion-row *ngIf="actionType == 'call'">
-          <ion-col><ion-button color="danger" expand="block" (click)="setAction('call')">Llamar</ion-button></ion-col>
-          <ion-col><ion-button color="success" expand="block" fill="outline" (click)="setAction('schedule')">Agendar</ion-button></ion-col>
+          <ion-col><ion-button color="primary" expand="block" (click)="setAction('call')">{{ 'services.call' | translate }}</ion-button></ion-col>
+          <ion-col><ion-button color="light-blue" expand="block" fill="outline" (click)="setAction('schedule')">{{ 'services.schedule' | translate }}</ion-button></ion-col>
         </ion-row>
         <ion-row *ngIf="actionType == 'schedule'">
-          <ion-col><ion-button color="danger" expand="block" fill="outline" (click)="setAction('call')">Llamar</ion-button></ion-col>
-          <ion-col><ion-button color="success" expand="block" (click)="setAction('schedule')">Agendar</ion-button></ion-col>
+          <ion-col><ion-button color="primary" expand="block" fill="outline" (click)="setAction('call')">{{ 'services.call' | translate }}</ion-button></ion-col>
+          <ion-col><ion-button color="light-blue" expand="block" (click)="setAction('schedule')">{{ 'services.schedule' | translate }}</ion-button></ion-col>
         </ion-row>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngIf="actionType == 'call'" [@fadeIn]>
+    <ion-card *ngIf="actionType != ''" [@fadeIn]>
       <ion-card-header>
-        <ion-card-subtitle>Motivo del acompañamiento</ion-card-subtitle>
+        <ion-card-subtitle>{{ 'services.who_wants' | translate }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list *ngIf="actionType == 'call'">
+          <ion-radio-group value="call">
+            <ion-item *ngFor="let personCall of personCallList" (click)="setPerson(personCall)">
+              <ion-label>{{ personCall }}</ion-label>
+              <ion-radio slot="start" [value]="personCall"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+        <ion-list *ngIf="actionType == 'schedule'">
+          <ion-radio-group value="schedule">
+            <ion-item *ngFor="let personSchedule of personScheduleList" (click)="setPerson(personSchedule)">
+              <ion-label>{{ personSchedule }}</ion-label>
+              <ion-radio slot="start" [value]="personSchedule"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="actionType != '' && selectedPerson != ''" [@fadeIn]>
+      <ion-card-header>
+        <ion-card-subtitle>{{ 'services.reason' | translate }}</ion-card-subtitle>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
@@ -66,7 +87,7 @@
         </ion-list>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngIf="actionType == 'call' && selectedReason != null && selectedReason.subr.length > 0" [@fadeIn]>
+    <ion-card *ngIf="actionType != '' && selectedPerson != '' && selectedReason != null && selectedReason.subr.length > 0" [@fadeIn]>
       <ion-card-header>
         <ion-card-subtitle>{{ selectedReason.name }}</ion-card-subtitle>
       </ion-card-header>
@@ -83,7 +104,7 @@
     </ion-card>
     <ion-card *ngIf="isReady" [@fadeIn]>
       <ion-card-content>
-        <ion-button color="primary" expand="block" (click)="goAhead()">Continuar</ion-button>
+        <ion-button color="primary" expand="block" (click)="goAhead()">{{ 'services.continue' | translate }}</ion-button>
       </ion-card-content>
     </ion-card>
   </div>

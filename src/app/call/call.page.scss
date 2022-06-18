@@ -4,5 +4,7 @@ ion-list {
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background: var(--ion-color-primary);
+    &.bg-primary {
+        background: var(--ion-color-primary);
+    }
 }

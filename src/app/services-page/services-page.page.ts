@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { iPlan, iReason, iSubReason } from '../app.interfaces';
 import { ApiService } from '../services/api.service';
 import { AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-services-page',
@@ -39,35 +40,58 @@ import { AlertController } from '@ionic/angular';
 export class ServicesPagePage {
 
   selectedPlan: iPlan;
+  selectedPerson: string;
   selectedReason: iReason;
   selectedSubReason: iSubReason;
   planList: iPlan[];
   reasonList: iReason[];
+  personCallList: string[];
+  personScheduleList: string[];
   actionType: string;
   isReady: boolean;
+  steps: boolean[];
 
   constructor(
     private router: Router,
     private api: ApiService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private translate: TranslateService
   ) {}
 
   async ionViewWillEnter () {
     this.isReady = false;
     this.selectedPlan = null;
     this.selectedReason = null;
+    this.selectedPerson = "";
+    this.actionType = "";
+    
     this.planList = await this.api.getPlans();
     this.reasonList = await this.api.getReasons();
+    
+    this.personCallList = [
+      this.translate.instant('services.persons.man'),
+      this.translate.instant('services.persons.woman'),
+      this.translate.instant('services.persons.dont_care')
+    ];
+
+    this.personScheduleList = [
+      this.translate.instant('services.persons.man'),
+      this.translate.instant('services.persons.woman'),
+      this.translate.instant('services.persons.friend'),
+      this.translate.instant('services.persons.dont_care')
+    ];
   }
 
   selectPlan (plan: iPlan) {
-    this.actionType = "";
     this.selectedPlan = plan;
   }
 
-  setAction (action: string) {
+  setAction (action: string, ready?: boolean) {
     this.actionType = action;
-    this.isReady = action == 'schedule';
+    if (action == 'call' || action == 'schedule') {
+      this.selectedPerson = "";
+    }
+    this.isReady = !!ready;
   }
 
   setReason (reason: iReason) {
@@ -76,6 +100,10 @@ export class ServicesPagePage {
     if (this.selectedReason.subr.length == 0) {
       this.isReady = true;
     }
+  }
+
+  setPerson (person: string) {
+    this.selectedPerson = person;
   }
 
   setSubReason (subReason: iSubReason) {
@@ -88,14 +116,26 @@ export class ServicesPagePage {
   }
 
   async goAhead () {
-    // IF NOT CREDITS
-    const alert = await this.alertController.create({
-      message: 'No cuentas con los créditos suficientes, por favor recarga...',
-      buttons: ['Aceptar']
-    });
-    await alert.present();
-    await alert.dismiss();
-    this.goTo('/credits-add');
+    const resp = await this.api.getRemainingCredits();
+    if (!!resp) {
+      if (resp.remaining_credits > 5) {
+        this.router.navigate(['/call'])
+      } else {
+        const alert = await this.alertController.create({
+          message: this.translate.instant('credits.no_credits'),
+          buttons: [this.translate.instant('general.accept')]
+        });
+        await alert.present();
+        alert.onDidDismiss().then(() => this.goTo('/credits-add'));
+      }
+    } else {
+      const alert = await this.alertController.create({
+        message: this.translate.instant('credits.load_error'),
+        buttons: [this.translate.instant('general.accept')]
+      });
+      await alert.present();
+    }
+
   }
 
 }

@@ -55,6 +55,14 @@ const routes: Routes = [
     path: 'call',
     loadChildren: () => import('./call/call.module').then( m => m.CallPageModule)
   },
+  {
+    path: 'talk',
+    loadChildren: () => import('./talk/talk.module').then( m => m.TalkPageModule)
+  },
+  {
+    path: 'call-end',
+    loadChildren: () => import('./call-end/call-end.module').then( m => m.CallEndPageModule)
+  },
 ];
 
 @NgModule({
